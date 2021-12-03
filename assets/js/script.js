@@ -1,4 +1,4 @@
-// High-scores page link
+// high-scores page link
 var highScoresLink = document.createElement("h3");
 highScoresLink.textContent = "View High Scores";
 highScoresLink.className = "high-scores-link";
@@ -14,27 +14,38 @@ document.body.appendChild(welcomeMessage);
 
 // "Welcome" message text
 var welcomeMessageText = document.createElement("h3");
-welcomeMessageText.textContent = "You will have 60 seconds to complete the quiz. Each correct answer is worth 20 points. Each wrong answer will subtract 10 seconds from the clock. Click the 'Start' button below to begin.";
+welcomeMessageText.textContent = "You will have 60 seconds to complete the quiz. Each correct answer is worth 20 points. Each wrong answer will subtract 10 seconds from the clock. Click the 'START' button below to begin!";
 welcomeMessageText.className = "welcome-msg-text";
 welcomeMessageText.id = "welcome-text"
 document.body.appendChild(welcomeMessageText);
 
+// create 'Start' button container
+var startButtonContainer = document.createElement("div");
+startButtonContainer.className = "start-button-container";
+startButtonContainer.id = "start-container";
+document.body.appendChild(startButtonContainer);
+
 // create 'Start' button
 var startButton = document.createElement("button");
-startButton.textContent = "Start";
+startButton.textContent = "START";
 startButton.className = "start-button";
 startButton.id = "start";
-document.body.appendChild(startButton);
+startButtonContainer.appendChild(startButton);
+
+startButton.addEventListener("click", function() {
+    welcomeMessage.classList.add("hide");
+    welcomeMessageText.classList.add("hide");
+    startButton.classList.add("hide");
+    startTimer()
+    questionOne()
+});
 
 // create 'Timer'
 var timer = document.createElement('div');
 document.body.appendChild(timer);
-if (timer === 0) {
-    endQuiz
-}
 
-startButton.addEventListener("click", function() {
-    
+// start 'Timer'
+function startTimer() {
     var countdownTime = 60;
     timer.textContent = countdownTime;
     timer.id = "timer";
@@ -43,11 +54,13 @@ startButton.addEventListener("click", function() {
         countdownTime = countdownTime - 1;
         timer.textContent = countdownTime;
     }, 1000);
+    if (countdownTime === 0){
+        endQuiz()
+    }
+}
 
-    welcomeMessage.classList.add("hide");
-    welcomeMessageText.classList.add("hide");
-    startButton.classList.add("hide");
-
+// question 1
+function questionOne() {
     var questionOne = document.createElement('ul');
     document.body.appendChild(questionOne);
     questionOne.textContent = "1. What year was HTML 1.0 released?"
@@ -90,8 +103,9 @@ startButton.addEventListener("click", function() {
         questionTwo()
     });
     }
-});
+}
 
+// question 2
 function questionTwo() {
     var questionTwo = document.createElement('ul');
     document.body.appendChild(questionTwo);
@@ -137,6 +151,7 @@ function questionTwo() {
     }
 };
 
+// question 3
 function questionThree() {
     var questionThree = document.createElement('ul');
     document.body.appendChild(questionThree);
@@ -182,6 +197,7 @@ function questionThree() {
     }
 };
 
+// question 4
 function questionFour() {
     var questionFour = document.createElement('ul');
     document.body.appendChild(questionFour);
@@ -227,6 +243,7 @@ function questionFour() {
     }
 };
 
+// question 5
 function questionFive() {
     var questionFive = document.createElement('ul');
     document.body.appendChild(questionFive);
@@ -272,9 +289,10 @@ function questionFive() {
     }
 };
 
-// function endQuiz() {
+// high-scores page
+function endQuiz() {
 
-// }
+}
 
 
 
