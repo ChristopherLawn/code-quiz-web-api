@@ -1,7 +1,71 @@
+body {
+    background-color: purple;
+}
+
+.high-scores-link {
+    color: aqua;
+    font-size: 25px;
+}
+
+.welcome-msg {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 35px;
+}
+
+.welcome-msg-text {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+}
+
 .start-button {
-    size: 300px;
+  background-color: #4CAF50;
+  border: black solid;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  /* display: center; */
+  font-size: 16px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 
 ul {
-    color: blue;
+    color: yellow;
+    text-align: center;
+    font-size: 25px;
+}
+
+li {
+    color: white;
+    list-style-type: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+li:hover {
+    background-color: purple;
+    color: black;
+    border-radius: 15px;
+    background: white;
+}
+
+.timer-style {
+    font-size: 25px;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    color: aqua;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+/* .question-one {
+    color: purple;
+} */
+
+.hide {
+    display: none;
 }
