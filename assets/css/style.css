@@ -6,6 +6,16 @@ body {
     color: aqua;
     font-size: 25px;
     text-shadow: 1px 1px 2px black;
+    width: 25%;
+}
+
+.high-scores-link:hover {
+    background-color: aqua;
+    border-radius: 15px;
+    color: white;
+    font-size: 25px;
+    text-shadow: 1px 1px 2px black;
+    width: 25%;
 }
 
 .welcome-msg {
@@ -15,6 +25,8 @@ body {
     font-size: 35px;
     text-shadow: 1px 1px 2px black;
     padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .welcome-msg-text {
@@ -23,6 +35,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
     text-shadow: 1px 1px 2px black;
+    padding: 15px;
 }
 
 .start-button-container {
@@ -57,11 +70,22 @@ button:hover {
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,121,9,1) 35%, rgba(0,212,255,1) 100%);
 }
 
+.timer-style {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aqua;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    text-shadow: 1px 1px 2px black;
+}
+
 ul {
     color: yellow;
     text-align: center;
     font-size: 25px;
     padding-top: 75px;
+    padding-right: 30px;
 }
 
 li {
@@ -78,20 +102,53 @@ li:hover {
     background: white;
 }
 
-.timer-style {
-    font-size: 25px;
+.your-high-score {
+    color: yellow;
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    color: aqua;
-    position: absolute;
-    top: 0px;
-    right: 10px;
+    font-size: 30px;
     text-shadow: 1px 1px 2px black;
+    padding-top: 30px;
+}
+
+.initials-instructions {
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px black;
+    padding-top: 30px;
+}
+
+.initials-input-container {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.submit-button-container {
+    text-align: center;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    border: black solid;
+    border-radius: 15px;
+    color: yellow;
+    padding: 10px 25px;
+    text-align: center;
+    /* text-decoration: none; */
+    font-size: 16px;
+    text-shadow: 1px 1px 2px black;
+    /* background: rgb(2,0,36); */
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,121,9,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.hide {
+    display: none;
 }
 
 /* .question-one {
     color: purple;
 } */
 
-.hide {
-    display: none;
-}

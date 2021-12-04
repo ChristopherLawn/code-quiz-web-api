@@ -4,6 +4,9 @@ highScoresLink.textContent = "View High Scores";
 highScoresLink.className = "high-scores-link";
 highScoresLink.id = "scores-link";
 document.body.appendChild(highScoresLink);
+highScoresLink.addEventListener("click", function() {
+    highScoresPage();
+});
 
 // "Welcome" message header
 var welcomeMessage = document.createElement("h1");
@@ -14,7 +17,7 @@ document.body.appendChild(welcomeMessage);
 
 // "Welcome" message text
 var welcomeMessageText = document.createElement("h3");
-welcomeMessageText.textContent = "You will have 60 seconds to complete the quiz. Each correct answer is worth 20 points. Each wrong answer will subtract 10 seconds from the clock. Click the 'START' button below to begin!";
+welcomeMessageText.textContent = "You will have 60 seconds to complete the quiz. Each wrong answer will subtract 10 seconds from the clock. If you complete the quiz before the clock runs out, the time remaining will be your final score. Click the 'START' button below to begin!";
 welcomeMessageText.className = "welcome-msg-text";
 welcomeMessageText.id = "welcome-text"
 document.body.appendChild(welcomeMessageText);
@@ -36,30 +39,41 @@ startButton.addEventListener("click", function() {
     welcomeMessage.classList.add("hide");
     welcomeMessageText.classList.add("hide");
     startButton.classList.add("hide");
+    highScoresLink.classList.add("hide");
     startTimer()
     questionOne()
 });
 
 // create 'Timer'
 var timer = document.createElement('div');
+    timer.id = "timer";
+    timer.className = "timer-style";
 document.body.appendChild(timer);
+
+var countdownTime;
+var interval;
 
 // start 'Timer'
 function startTimer() {
-    var countdownTime = 60;
+    countdownTime = 60;
     timer.textContent = countdownTime;
-    timer.id = "timer";
-    timer.className = "timer-style";
-    setInterval(function() {
+    
+    interval = setInterval(function() {
         countdownTime = countdownTime - 1;
         timer.textContent = countdownTime;
+        if (countdownTime === 0) {
+            clearInterval(interval);
+            endQuiz()
+        }
     }, 1000);
-    if (countdownTime === 0){
-        endQuiz()
-    }
 }
+// if (countdownTime === 0){
+//     clearInterval(interval);
+//     endQuiz()
+// };
 
 // question 1
+var questionOne;
 function questionOne() {
     var questionOne = document.createElement('ul');
     document.body.appendChild(questionOne);
@@ -69,6 +83,7 @@ function questionOne() {
     answerOne.textContent = "A:  1991"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionOne.classList.add("hide")
         answerOne.classList.add("hide")
         questionTwo()
@@ -78,6 +93,7 @@ function questionOne() {
     answerTwo.textContent = "B:  1992"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionOne.classList.add("hide")
         answerTwo.classList.add("hide")
         questionTwo()
@@ -98,14 +114,25 @@ function questionOne() {
     answerFour.textContent = "D:  1994"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionOne.classList.add("hide")
         answerFour.classList.add("hide")
         questionTwo()
     });
     }
+    // if (countdownTime === 0){
+    //     questionOne.classList.add("hide");
+    //     answerOne.classList.add("hide");
+    //     answerTwo.classList.add("hide");
+    //     answerThree.classList.add("hide");
+    //     answerFour.classList.add("hide");
+    //     clearInterval(interval);
+    //     endQuiz()
+    // };
 }
 
 // question 2
+var questionTwo;
 function questionTwo() {
     var questionTwo = document.createElement('ul');
     document.body.appendChild(questionTwo);
@@ -115,6 +142,7 @@ function questionTwo() {
     answerOne.textContent = "A:  <!-- --!>"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionTwo.classList.add("hide")
         answerOne.classList.add("hide")
         questionThree()
@@ -134,6 +162,7 @@ function questionTwo() {
     answerThree.textContent = "C:  -' '- "
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionTwo.classList.add("hide")
         answerThree.classList.add("hide")
         questionThree()
@@ -144,14 +173,25 @@ function questionTwo() {
     answerFour.textContent = "D:  /*  */"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionTwo.classList.add("hide")
         answerFour.classList.add("hide")
         questionThree()
     });
     }
+    // if (countdownTime === 0){
+    //     questionTwo.classList.add("hide");
+    //     answerOne.classList.add("hide");
+    //     answerTwo.classList.add("hide");
+    //     answerThree.classList.add("hide");
+    //     answerFour.classList.add("hide");
+    //     clearInterval(interval);
+    //     endQuiz()
+    // }
 };
 
 // question 3
+var questionThree;
 function questionThree() {
     var questionThree = document.createElement('ul');
     document.body.appendChild(questionThree);
@@ -161,6 +201,7 @@ function questionThree() {
     answerOne.textContent = "A:  Push"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionThree.classList.add("hide")
         answerOne.classList.add("hide")
         questionFour()
@@ -170,6 +211,7 @@ function questionThree() {
     answerTwo.textContent = "B:  Commit"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionThree.classList.add("hide")
         answerTwo.classList.add("hide")
         questionFour()
@@ -180,6 +222,7 @@ function questionThree() {
     answerThree.textContent = "C:  Pull"
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionThree.classList.add("hide")
         answerThree.classList.add("hide")
         questionFour()
@@ -195,9 +238,19 @@ function questionThree() {
         questionFour()
     });
     }
+    // if (countdownTime === 0){
+    //     questionThree.classList.add("hide");
+    //     answerOne.classList.add("hide");
+    //     answerTwo.classList.add("hide");
+    //     answerThree.classList.add("hide");
+    //     answerFour.classList.add("hide");
+    //     clearInterval(interval);
+    //     endQuiz()
+    // }
 };
 
 // question 4
+var questionFour;
 function questionFour() {
     var questionFour = document.createElement('ul');
     document.body.appendChild(questionFour);
@@ -216,6 +269,7 @@ function questionFour() {
     answerTwo.textContent = "B:  <script name='title.js'>"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionFour.classList.add("hide")
         answerTwo.classList.add("hide")
         questionFive()
@@ -226,6 +280,7 @@ function questionFour() {
     answerThree.textContent = "C:  <script href='title.js'>"
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionFour.classList.add("hide")
         answerThree.classList.add("hide")
         questionFive()
@@ -236,14 +291,25 @@ function questionFour() {
     answerFour.textContent = "D:  <script id='title.js'>"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionFour.classList.add("hide")
         answerFour.classList.add("hide")
         questionFive()
     });
     }
+    // if (countdownTime === 0) {
+    //     questionFour.classList.add("hide");
+    //     answerOne.classList.add("hide");
+    //     answerTwo.classList.add("hide");
+    //     answerThree.classList.add("hide");
+    //     answerFour.classList.add("hide");
+    //     clearInterval(interval);
+    //     endQuiz()
+    // }
 };
 
 // question 5
+var questionFive;
 function questionFive() {
     var questionFive = document.createElement('ul');
     document.body.appendChild(questionFive);
@@ -253,6 +319,7 @@ function questionFive() {
     answerOne.textContent = "A:  var fruits = 'apple', 'orange', 'grape'"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionFive.classList.add("hide")
         answerOne.classList.add("hide")
         endQuiz()
@@ -272,6 +339,7 @@ function questionFive() {
     answerThree.textContent = "C:  var fruits = (1='apple', 2='orange', 3='grape')"
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionFive.classList.add("hide")
         answerThree.classList.add("hide")
         endQuiz()
@@ -282,20 +350,106 @@ function questionFive() {
     answerFour.textContent = "D:  var fruits = 1=('apple'), 2=('orange'), 3=('grape')"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
+        countdownTime = countdownTime - 10;
         questionFive.classList.add("hide")
         answerFour.classList.add("hide")
         endQuiz()
     });
     }
+    // if (countdownTime === 0){
+    //     questionFive.classList.add("hide");
+    //     answerOne.classList.add("hide");
+    //     answerTwo.classList.add("hide");
+    //     answerThree.classList.add("hide");
+    //     answerFour.classList.add("hide");
+    //     clearInterval(interval);
+    //     endQuiz()
+    // }
 };
 
+
+// var highScores = countdownTime
 // var playerPoints = 0
 
+function endQuiz() {
+    // highScoresLink.classList.remove("hide");
+    // var highScoresArray = JSON.parse(localStorage.getItem("interval")) || [];
+    // var highScoresArray = document.createElement("h3");
+    // document.body.appendChild(highScoresArray);
+    var yourHighScore = document.createElement("h1");
+    yourHighScore.textContent = "Here is your high score:  '+ timer-interval score' "
+    yourHighScore.id = "high-score";
+    yourHighScore.className = "your-high-score";
+    document.body.appendChild(yourHighScore);
+
+    var initialsInstructions = document.createElement("h3");
+    initialsInstructions.textContent = "Please enter your initials below:";
+    initialsInstructions.id = "initials";
+    initialsInstructions.className = "initials-instructions";
+    document.body.appendChild(initialsInstructions);
+
+    var initialsInputContainer = document.createElement("div");
+    initialsInputContainer.id = "initials-container";
+    initialsInputContainer.className = "initials-input-container";
+    document.body.appendChild(initialsInputContainer);
+
+    var initialsInput = document.createElement("input");
+    initialsInput.id = "input";
+    initialsInput.className = "initials-input";
+    initialsInputContainer.appendChild(initialsInput);
+    document.getElementById("input").setAttribute('maxlength',2);
+    // function allLetter (initialsInput) {
+    //   { 
+    //   var letters = /^[A-Za-z]+$/;
+    //   if(initialsInput.value.match(letters))
+    //   {
+    //   alert('Your name have accepted : you can try another');
+    //   return true;
+    //   }
+    //   else
+    //   {
+    //   alert('Please input alphabet characters only');
+    //   return false;
+    //   }
+    //   }
+    // }
+    // highScoresArray.textContent = "View High Scores";
+    // highScoresArray.className = "high-scores-link";
+    // highScoresArray.id = "scores-link";
+    // create 'Submit' button container
+    var submitButtonContainer = document.createElement("div");
+    submitButtonContainer.className = "submit-button-container";
+    submitButtonContainer.id = "submit-container";
+    document.body.appendChild(submitButtonContainer);
+
+    var submitButton = document.createElement("button");
+    submitButton.textContent = "SUBMIT";
+    submitButton.className = "submit-button";
+    submitButton.id = "submit";
+    submitButtonContainer.appendChild(submitButton);
+    submitButton.addEventListener("click", function() {
+        yourHighScore.classList.add("hide");
+        initialsInstructions.classList.add("hide");
+        initialsInputContainer.classList.add("hide");
+        initialsInput.classList.add("hide");
+        submitButton.classList.add("hide");
+        highScoresLink.classList.add("hide");
+    });
+    // clearInterval(interval);
+    // localStorage.setItem("interval", highScoresArray);
+
+    highScoresPage();
+}
+
+function highScoresPage() {
+    var highScoresArray = interval;
+}
 
 // high-scores page
-function endQuiz() {
-
-}
+// function endQuiz() {
+//     var stopHighScore = 
+//     // var highScores = countdownTime
+// }
 
 
 
