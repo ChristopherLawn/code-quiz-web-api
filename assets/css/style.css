@@ -144,6 +144,42 @@ li:hover {
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,121,9,1) 35%, rgba(0,212,255,1) 100%);
 }
 
+.play-again-button-container {
+    text-align: center;
+}
+
+.play-again-button {
+    background-color: #4CAF50;
+    border: black solid;
+    border-radius: 15px;
+    color: yellow;
+    padding: 10px 25px;
+    text-align: center;
+    /* text-decoration: none; */
+    font-size: 16px;
+    text-shadow: 1px 1px 2px black;
+    /* background: rgb(2,0,36); */
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,121,9,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.get-me-out-button-container {
+    text-align: center;
+}
+
+.get-me-out-button {
+    background-color: #4CAF50;
+    border: black solid;
+    border-radius: 15px;
+    color: yellow;
+    padding: 10px 25px;
+    text-align: center;
+    /* text-decoration: none; */
+    font-size: 16px;
+    text-shadow: 1px 1px 2px black;
+    /* background: rgb(2,0,36); */
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,121,9,1) 35%, rgba(0,212,255,1) 100%);
+}
+
 .hide {
     display: none;
 }

@@ -5,7 +5,11 @@ highScoresLink.className = "high-scores-link";
 highScoresLink.id = "scores-link";
 document.body.appendChild(highScoresLink);
 highScoresLink.addEventListener("click", function() {
-    highScoresPage();
+    welcomeMessage.classList.add("hide");
+    welcomeMessageText.classList.add("hide");
+    startButton.classList.add("hide");
+    highScoresLink.classList.add("hide");
+    highScoresList();
 });
 
 // "Welcome" message header
@@ -104,6 +108,7 @@ function questionOne() {
     answerThree.textContent = "C:  1993"
     answerThree.addEventListener("click", function() {
         alert("Correct!")
+        // highScore.innerHTML += 20;
         questionOne.classList.add("hide")
         answerThree.classList.add("hide")
         questionTwo()
@@ -152,6 +157,7 @@ function questionTwo() {
     answerTwo.textContent = "B:  //"
     answerTwo.addEventListener("click", function() {
         alert("Correct!")
+        // highScore.innerHTML += 20;
         questionTwo.classList.add("hide")
         answerTwo.classList.add("hide")
         questionThree()
@@ -233,6 +239,7 @@ function questionThree() {
     answerFour.textContent = "D:  Merge"
     answerFour.addEventListener("click", function() {
         alert("Correct!")
+        // highScore.innerHTML += 20;
         questionThree.classList.add("hide")
         answerFour.classList.add("hide")
         questionFour()
@@ -260,6 +267,7 @@ function questionFour() {
     answerOne.textContent = "A:  <script src='title.js'>"
     answerOne.addEventListener("click", function() {
         alert("Correct!")
+        // highScore.innerHTML += 20;
         questionFour.classList.add("hide")
         answerOne.classList.add("hide")
         questionFive()
@@ -329,6 +337,7 @@ function questionFive() {
     answerTwo.textContent = "B:  var fruits = ['apple', 'orange', 'grape']"
     answerTwo.addEventListener("click", function() {
         alert("Correct!")
+        // highScore.innerHTML += 20;
         questionFive.classList.add("hide")
         answerTwo.classList.add("hide")
         endQuiz()
@@ -377,7 +386,7 @@ function endQuiz() {
     // var highScoresArray = document.createElement("h3");
     // document.body.appendChild(highScoresArray);
     var yourHighScore = document.createElement("h1");
-    yourHighScore.textContent = "Here is your high score:  '+ timer-interval score' "
+    yourHighScore.textContent = "Here is your high score: ";
     yourHighScore.id = "high-score";
     yourHighScore.className = "your-high-score";
     document.body.appendChild(yourHighScore);
@@ -434,15 +443,59 @@ function endQuiz() {
         initialsInput.classList.add("hide");
         submitButton.classList.add("hide");
         highScoresLink.classList.add("hide");
+        timer.classList.add("hide");
+        highScoresList();
     });
-    // clearInterval(interval);
-    // localStorage.setItem("interval", highScoresArray);
-
-    highScoresPage();
+    clearInterval(interval);
+    // localStorage.setItem("interval", highScore);
 }
 
-function highScoresPage() {
-    var highScoresArray = interval;
+// function highScorePage() {
+// var highScore = document.createElement("div");
+// document.body.appendChild(highScore);
+// }
+// saves highScore to localStorage - PUT THIS IN 'SUBMIT' BUTTON FUNCTION
+
+function highScoresList() {
+    var highScoresList = document.createElement("ul");
+    highScoresList.textContent = "HIGH SCORES";
+    highScoresList.className = "high-scores";
+    highScoresList.id = "scores";
+    document.body.appendChild(highScoresList);
+
+    var playAgainButtonContainer = document.createElement("div");
+    playAgainButtonContainer.className = "play-again-button-container";
+    playAgainButtonContainer.id = "play-again-container";
+    document.body.appendChild(playAgainButtonContainer);
+
+    var playAgainButton = document.createElement("button");
+    playAgainButton.textContent = "PLAY AGAIN";
+    playAgainButton.className = "play-again-button";
+    playAgainButton.id = "play-again";
+    playAgainButtonContainer.appendChild(playAgainButton);
+    playAgainButton.addEventListener("click", function() {
+        highScoresList.classList.add("hide");
+        playAgainButtonContainer.classList.add("hide");
+        playAgainButton.classList.add("hide");
+        getMeOutButtonContainer.classList.add("hide");
+        getMeOutButton.classList.add("hide");
+        startTimer();
+        questionOne();
+    });
+
+    var getMeOutButtonContainer = document.createElement("div");
+    getMeOutButtonContainer.className = "get-me-out-button-container";
+    getMeOutButtonContainer.id = "get-out-container";
+    document.body.appendChild(getMeOutButtonContainer);
+
+    var getMeOutButton = document.createElement("button");
+    getMeOutButton.textContent = "GET ME OUTTA HERE";
+    getMeOutButton.className = "get-me-out-button";
+    getMeOutButton.id = "get-out";
+    getMeOutButtonContainer.appendChild(getMeOutButton);
+    getMeOutButton.addEventListener("click", function URL() {
+        location.href = "http://www.google.com";
+    });
 }
 
 // high-scores page
