@@ -5,6 +5,7 @@ body {
 .high-scores-link {
     color: aqua;
     font-size: 25px;
+    text-shadow: 1px 1px 2px black;
 }
 
 .welcome-msg {
@@ -13,6 +14,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 35px;
     text-shadow: 1px 1px 2px black;
+    padding-top: 30px;
 }
 
 .welcome-msg-text {
@@ -59,6 +61,7 @@ ul {
     color: yellow;
     text-align: center;
     font-size: 25px;
+    padding-top: 75px;
 }
 
 li {
@@ -80,8 +83,9 @@ li:hover {
     font-family: Arial, Helvetica, sans-serif;
     color: aqua;
     position: absolute;
-    top: 8px;
-    right: 16px;
+    top: 0px;
+    right: 10px;
+    text-shadow: 1px 1px 2px black;
 }
 
 /* .question-one {

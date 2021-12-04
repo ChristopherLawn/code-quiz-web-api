@@ -289,6 +289,9 @@ function questionFive() {
     }
 };
 
+// var playerPoints = 0
+
+
 // high-scores page
 function endQuiz() {
 
