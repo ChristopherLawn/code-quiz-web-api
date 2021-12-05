@@ -1,3 +1,5 @@
+var finalScore = "";
+
 // high-scores page link
 var highScoresLink = document.createElement("h3");
 highScoresLink.textContent = "View High Scores";
@@ -59,7 +61,7 @@ var interval;
 
 // start 'Timer'
 function startTimer() {
-    countdownTime = 60;
+    countdownTime = 10;
     timer.textContent = countdownTime;
     
     interval = setInterval(function() {
@@ -67,7 +69,7 @@ function startTimer() {
         timer.textContent = countdownTime;
         if (countdownTime === 0) {
             clearInterval(interval);
-            endQuiz()
+            highScoresList()
         }
     }, 1000);
 }
@@ -80,6 +82,7 @@ function startTimer() {
 var questionOne;
 function questionOne() {
     var questionOne = document.createElement('ul');
+    questionOne.id = "question-one";
     document.body.appendChild(questionOne);
     questionOne.textContent = "1. What year was HTML 1.0 released?"
     var answerOne = document.createElement('li');
@@ -126,13 +129,10 @@ function questionOne() {
     });
     }
     // if (countdownTime === 0){
-    //     questionOne.classList.add("hide");
-    //     answerOne.classList.add("hide");
-    //     answerTwo.classList.add("hide");
-    //     answerThree.classList.add("hide");
-    //     answerFour.classList.add("hide");
+    //     var ulEl = document.getElementById("question-one");
+    //     ulEl.classList.add("hide");
     //     clearInterval(interval);
-    //     endQuiz()
+    //     highScoresList();
     // };
 }
 
@@ -140,6 +140,7 @@ function questionOne() {
 var questionTwo;
 function questionTwo() {
     var questionTwo = document.createElement('ul');
+    questionTwo.id = "question-two";
     document.body.appendChild(questionTwo);
     questionTwo.textContent = "2. What is the correct syntax to 'comment out' code in JavaScript?"
     var answerOne = document.createElement('li');
@@ -200,6 +201,7 @@ function questionTwo() {
 var questionThree;
 function questionThree() {
     var questionThree = document.createElement('ul');
+    questionThree.id = "question-three";
     document.body.appendChild(questionThree);
     questionThree.textContent = "3. Which Git command is used to combine two branches within the same project?"
     var answerOne = document.createElement('li');
@@ -260,6 +262,7 @@ function questionThree() {
 var questionFour;
 function questionFour() {
     var questionFour = document.createElement('ul');
+    questionFour.id = "question-four";
     document.body.appendChild(questionFour);
     questionFour.textContent = "4. What is the correct syntax for referring to an external script called 'title.js'?"
     var answerOne = document.createElement('li');
@@ -320,6 +323,7 @@ function questionFour() {
 var questionFive;
 function questionFive() {
     var questionFive = document.createElement('ul');
+    questionFive.id = "question-five";
     document.body.appendChild(questionFive);
     questionFive.textContent = "5. What is the correct way to write a JavaScript array?"
     var answerOne = document.createElement('li');
@@ -330,7 +334,10 @@ function questionFive() {
         countdownTime = countdownTime - 10;
         questionFive.classList.add("hide")
         answerOne.classList.add("hide")
-        endQuiz()
+        timer.classList.add("hide");
+        localStorage.setItem("score", countdownTime);
+        endQuiz();
+        // return finalScore = countdownTime;
     });
     var answerTwo = document.createElement('li'); {
     questionFive.appendChild(answerTwo);
@@ -340,7 +347,10 @@ function questionFive() {
         // highScore.innerHTML += 20;
         questionFive.classList.add("hide")
         answerTwo.classList.add("hide")
-        endQuiz()
+        timer.classList.add("hide");
+        localStorage.setItem("score", countdownTime);
+        endQuiz();
+        // return finalScore = countdownTime;
     });
     }
     var answerThree = document.createElement('li'); {
@@ -351,7 +361,10 @@ function questionFive() {
         countdownTime = countdownTime - 10;
         questionFive.classList.add("hide")
         answerThree.classList.add("hide")
-        endQuiz()
+        timer.classList.add("hide");
+        localStorage.setItem("score", countdownTime);
+        endQuiz();
+        // return finalScore = countdownTime;
     });
     }
     var answerFour = document.createElement('li'); {
@@ -362,7 +375,10 @@ function questionFive() {
         countdownTime = countdownTime - 10;
         questionFive.classList.add("hide")
         answerFour.classList.add("hide")
-        endQuiz()
+        timer.classList.add("hide");
+        localStorage.setItem("score", countdownTime);
+        endQuiz();
+        // return finalScore = countdownTime;
     });
     }
     // if (countdownTime === 0){
@@ -377,6 +393,8 @@ function questionFive() {
 };
 
 
+
+
 // var highScores = countdownTime
 // var playerPoints = 0
 
@@ -385,8 +403,24 @@ function endQuiz() {
     // var highScoresArray = JSON.parse(localStorage.getItem("interval")) || [];
     // var highScoresArray = document.createElement("h3");
     // document.body.appendChild(highScoresArray);
+    var ulEl = document.getElementById("question-one");
+    ulEl.classList.add("hide");
+
+    var ulElTwo = document.getElementById("question-two");
+    ulElTwo.classList.add("hide");
+
+    var ulElThree = document.getElementById("question-three");
+    ulElThree.classList.add("hide");
+
+    var ulElFour = document.getElementById("question-four");
+    ulElFour.classList.add("hide");
+
+    var ulElFive = document.getElementById("question-five");
+    ulElFive.classList.add("hide");
+
     var yourHighScore = document.createElement("h1");
-    yourHighScore.textContent = "Here is your high score: ";
+    var score = localStorage.getItem("score");
+    yourHighScore.textContent = "Here is your high score: " + score;
     yourHighScore.id = "high-score";
     yourHighScore.className = "your-high-score";
     document.body.appendChild(yourHighScore);
@@ -437,6 +471,10 @@ function endQuiz() {
     submitButton.id = "submit";
     submitButtonContainer.appendChild(submitButton);
     submitButton.addEventListener("click", function() {
+        // if (input === "" || input === undefined) {
+        //     alert("You need to enter two initials!")
+        // }
+        // else {
         yourHighScore.classList.add("hide");
         initialsInstructions.classList.add("hide");
         initialsInputContainer.classList.add("hide");
@@ -444,7 +482,10 @@ function endQuiz() {
         submitButton.classList.add("hide");
         highScoresLink.classList.add("hide");
         timer.classList.add("hide");
+        var userInitials = document.getElementById("input").value;
+        localStorage.setItem("userInitials", userInitials);
         highScoresList();
+        // }
     });
     clearInterval(interval);
     // localStorage.setItem("interval", highScore);
@@ -457,11 +498,37 @@ function endQuiz() {
 // saves highScore to localStorage - PUT THIS IN 'SUBMIT' BUTTON FUNCTION
 
 function highScoresList() {
+    // timer.classList.add("hide");
+
+    // var ulEl = document.getElementById("question-one");
+    // ulEl.classList.add("hide");
+
+    // var ulElTwo = document.getElementById("question-two");
+    // ulElTwo.classList.add("hide");
+
+    // var ulElThree = document.getElementById("question-three");
+    // ulElThree.classList.add("hide");
+
+    // var ulElFour = document.getElementById("question-four");
+    // ulElFour.classList.add("hide");
+
+    // var ulElFive = document.getElementById("question-five");
+    // ulElFive.classList.add("hide");
+
     var highScoresList = document.createElement("ul");
     highScoresList.textContent = "HIGH SCORES";
     highScoresList.className = "high-scores";
     highScoresList.id = "scores";
     document.body.appendChild(highScoresList);
+
+    var highScoreInitials = localStorage.getItem("userInitials");
+    // highScoreInitials.className = "high-score-initials";
+    var highScoreScore = localStorage.getItem("score");
+    // highScoreScore.className = "high-score-score";
+    var initialsAndScoreContainer = document.createElement("div");
+    initialsAndScoreContainer.textContent = highScoreInitials + ":  " + highScoreScore;
+    initialsAndScoreContainer.id = "initials-score-container"
+    highScoresList.appendChild(initialsAndScoreContainer);
 
     var playAgainButtonContainer = document.createElement("div");
     playAgainButtonContainer.className = "play-again-button-container";
@@ -474,13 +541,32 @@ function highScoresList() {
     playAgainButton.id = "play-again";
     playAgainButtonContainer.appendChild(playAgainButton);
     playAgainButton.addEventListener("click", function() {
-        highScoresList.classList.add("hide");
-        playAgainButtonContainer.classList.add("hide");
-        playAgainButton.classList.add("hide");
-        getMeOutButtonContainer.classList.add("hide");
-        getMeOutButton.classList.add("hide");
-        startTimer();
-        questionOne();
+        document.location.reload();
+        // highScoresList.classList.add("hide");
+        // playAgainButtonContainer.classList.add("hide");
+        // playAgainButton.classList.add("hide");
+        // clearHighScoresContainer.classList.add("hide");
+        // clearHighScoresButton.classList.add("hide");
+        // getMeOutButtonContainer.classList.add("hide");
+        // getMeOutButton.classList.add("hide");
+        // timer.classList.remove("hide");
+        // startTimer();
+        // questionOne();
+    });
+
+    var clearHighScoresContainer = document.createElement("div");
+    clearHighScoresContainer.className = "clear-scores-button-container";
+    clearHighScoresContainer.id = "clear-scores-container";
+    document.body.appendChild(clearHighScoresContainer);
+
+    var clearHighScoresButton = document.createElement("button");
+    clearHighScoresButton.textContent = "CLEAR HIGH SCORES";
+    clearHighScoresButton.className = "clear-scores-button";
+    clearHighScoresButton.id = "clear-scores";
+    clearHighScoresContainer.appendChild(clearHighScoresButton);
+    clearHighScoresButton.addEventListener("click", function() {
+        initialsAndScoreContainer.classList.add("hide");
+        localStorage.clear();
     });
 
     var getMeOutButtonContainer = document.createElement("div");
