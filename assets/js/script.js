@@ -1,4 +1,8 @@
-var finalScore = "";
+// retrieve player initials info from localStorage
+var userInitialsArray = JSON.parse(localStorage.getItem("userInitials")) || []; 
+
+// retrieve player score info from localStorage
+var highScoresArray = JSON.parse(localStorage.getItem("score")) || [];
 
 // high-scores page link
 var highScoresLink = document.createElement("h3");
@@ -41,6 +45,7 @@ startButton.className = "start-button";
 startButton.id = "start";
 startButtonContainer.appendChild(startButton);
 
+// add event listener to 'Start' button
 startButton.addEventListener("click", function() {
     welcomeMessage.classList.add("hide");
     welcomeMessageText.classList.add("hide");
@@ -57,6 +62,7 @@ var timer = document.createElement('div');
 document.body.appendChild(timer);
 
 var countdownTime;
+
 var interval;
 
 // start 'Timer'
@@ -75,10 +81,6 @@ function startTimer() {
         timer.textContent = countdownTime;
     }, 1000);
 }
-// if (countdownTime === 0){
-//     clearInterval(interval);
-//     endQuiz()
-// };
 
 // question 1
 var questionOne;
@@ -87,10 +89,10 @@ function questionOne() {
     questionOne.id = "question-one";
     questionOne.className = "question";
     document.body.appendChild(questionOne);
-    questionOne.textContent = "1. What year was HTML 1.0 released?"
+    questionOne.textContent = "1. Which is the correct way to write an 'IF' statement in JavaScript?"
     var answerOne = document.createElement('li');
     questionOne.appendChild(answerOne)
-    answerOne.textContent = "A:  1991"
+    answerOne.textContent = "A:  if i = 5"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
         if (countdownTime - 10 > 0) {
@@ -104,7 +106,7 @@ function questionOne() {
     });
     var answerTwo = document.createElement('li'); {
     questionOne.appendChild(answerTwo)
-    answerTwo.textContent = "B:  1992"
+    answerTwo.textContent = "B:  if i == 5 then"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
         if (countdownTime - 10 > 0) {
@@ -119,7 +121,7 @@ function questionOne() {
     }
     var answerThree = document.createElement('li'); {
     questionOne.appendChild(answerThree)
-    answerThree.textContent = "C:  1993"
+    answerThree.textContent = "C:  if (i == 5)"
     answerThree.addEventListener("click", function() {
         alert("Correct!")
         countdownTime = countdownTime + 10;
@@ -130,7 +132,7 @@ function questionOne() {
     }
     var answerFour = document.createElement('li'); {
     questionOne.appendChild(answerFour)
-    answerFour.textContent = "D:  1994"
+    answerFour.textContent = "D:  if i = 5 then"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
         if (countdownTime - 10 > 0) {
@@ -143,12 +145,6 @@ function questionOne() {
         questionTwo()
     });
     }
-    // if (countdownTime === 0){
-    //     var ulEl = document.getElementById("question-one");
-    //     ulEl.classList.add("hide");
-    //     clearInterval(interval);
-    //     highScoresList();
-    // };
 }
 
 // question 2
@@ -213,15 +209,6 @@ function questionTwo() {
         questionThree()
     });
     }
-    // if (countdownTime === 0){
-    //     questionTwo.classList.add("hide");
-    //     answerOne.classList.add("hide");
-    //     answerTwo.classList.add("hide");
-    //     answerThree.classList.add("hide");
-    //     answerFour.classList.add("hide");
-    //     clearInterval(interval);
-    //     endQuiz()
-    // }
 };
 
 // question 3
@@ -230,10 +217,10 @@ function questionThree() {
     var questionThree = document.createElement('ul');
     questionThree.id = "question-three";
     document.body.appendChild(questionThree);
-    questionThree.textContent = "3. Which Git command is used to combine two branches within the same project?"
+    questionThree.textContent = "3. Which operator is used to assign a value to a variable?"
     var answerOne = document.createElement('li');
     questionThree.appendChild(answerOne)
-    answerOne.textContent = "A:  Push"
+    answerOne.textContent = "A:  *"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
         if (countdownTime - 10 > 0) {
@@ -247,7 +234,7 @@ function questionThree() {
     });
     var answerTwo = document.createElement('li'); {
     questionThree.appendChild(answerTwo);
-    answerTwo.textContent = "B:  Commit"
+    answerTwo.textContent = "B:  -"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
         if (countdownTime - 10 > 0) {
@@ -262,7 +249,7 @@ function questionThree() {
     }
     var answerThree = document.createElement('li'); {
     questionThree.appendChild(answerThree)
-    answerThree.textContent = "C:  Pull"
+    answerThree.textContent = "C:  X"
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
         if (countdownTime - 10 > 0) {
@@ -277,7 +264,7 @@ function questionThree() {
     }
     var answerFour = document.createElement('li'); {
     questionThree.appendChild(answerFour)
-    answerFour.textContent = "D:  Merge"
+    answerFour.textContent = "D:  ="
     answerFour.addEventListener("click", function() {
         alert("Correct!")
         countdownTime = countdownTime + 10;
@@ -286,15 +273,6 @@ function questionThree() {
         questionFour()
     });
     }
-    // if (countdownTime === 0){
-    //     questionThree.classList.add("hide");
-    //     answerOne.classList.add("hide");
-    //     answerTwo.classList.add("hide");
-    //     answerThree.classList.add("hide");
-    //     answerFour.classList.add("hide");
-    //     clearInterval(interval);
-    //     endQuiz()
-    // }
 };
 
 // question 4
@@ -359,15 +337,6 @@ function questionFour() {
         questionFive()
     });
     }
-    // if (countdownTime === 0) {
-    //     questionFour.classList.add("hide");
-    //     answerOne.classList.add("hide");
-    //     answerTwo.classList.add("hide");
-    //     answerThree.classList.add("hide");
-    //     answerFour.classList.add("hide");
-    //     clearInterval(interval);
-    //     endQuiz()
-    // }
 };
 
 // question 5
@@ -392,7 +361,6 @@ function questionFive() {
         timer.classList.add("hide");
         localStorage.setItem("score", countdownTime);
         endQuiz();
-        // return finalScore = countdownTime;
     });
     var answerTwo = document.createElement('li'); {
     questionFive.appendChild(answerTwo);
@@ -405,7 +373,6 @@ function questionFive() {
         timer.classList.add("hide");
         localStorage.setItem("score", countdownTime);
         endQuiz();
-        // return finalScore = countdownTime;
     });
     }
     var answerThree = document.createElement('li'); {
@@ -423,7 +390,6 @@ function questionFive() {
         timer.classList.add("hide");
         localStorage.setItem("score", countdownTime);
         endQuiz();
-        // return finalScore = countdownTime;
     });
     }
     var answerFour = document.createElement('li'); {
@@ -441,20 +407,11 @@ function questionFive() {
         timer.classList.add("hide");
         localStorage.setItem("score", countdownTime);
         endQuiz();
-        // return finalScore = countdownTime;
     });
     }
-    // if (countdownTime === 0){
-    //     questionFive.classList.add("hide");
-    //     answerOne.classList.add("hide");
-    //     answerTwo.classList.add("hide");
-    //     answerThree.classList.add("hide");
-    //     answerFour.classList.add("hide");
-    //     clearInterval(interval);
-    //     endQuiz()
-    // }
 };
 
+// hide questions if timer reaches '0' before player answers all questions
 function hideQuestions() {
     var ulEl = document.getElementById("question-one");
     if (ulEl) {
@@ -482,30 +439,29 @@ function hideQuestions() {
     };
 };
 
-
-// var highScores = countdownTime
-// var playerPoints = 0
-
+// if the player has a score higher than '0', they can enter their initials and save their score
 function endQuiz() {
-    // highScoresLink.classList.remove("hide");
-    // var highScoresArray = JSON.parse(localStorage.getItem("interval")) || [];
-    // var highScoresArray = document.createElement("h3");
-    // document.body.appendChild(highScoresArray);
-    hideQuestions();
 
+    hideQuestions();
+    highScoresArray.push(countdownTime);
+    localStorage.setItem("score", JSON.stringify(highScoresArray));
+
+    // create player score message
     var yourHighScore = document.createElement("h1");
     var score = localStorage.getItem("score");
-    yourHighScore.textContent = "Here is your high score: " + score;
+    yourHighScore.textContent = "Your score: " + countdownTime;
     yourHighScore.id = "high-score";
     yourHighScore.className = "your-high-score";
     document.body.appendChild(yourHighScore);
 
+    // create enter initials instructions
     var initialsInstructions = document.createElement("h3");
     initialsInstructions.textContent = "Please enter your initials below:";
     initialsInstructions.id = "initials";
     initialsInstructions.className = "initials-instructions";
     document.body.appendChild(initialsInstructions);
 
+    // create input for player to enter initials
     var initialsInputContainer = document.createElement("div");
     initialsInputContainer.id = "initials-container";
     initialsInputContainer.className = "initials-input-container";
@@ -516,40 +472,20 @@ function endQuiz() {
     initialsInput.className = "initials-input";
     initialsInputContainer.appendChild(initialsInput);
     document.getElementById("input").setAttribute('maxlength',2);
-    // function allLetter (initialsInput) {
-    //   { 
-    //   var letters = /^[A-Za-z]+$/;
-    //   if(initialsInput.value.match(letters))
-    //   {
-    //   alert('Your name have accepted : you can try another');
-    //   return true;
-    //   }
-    //   else
-    //   {
-    //   alert('Please input alphabet characters only');
-    //   return false;
-    //   }
-    //   }
-    // }
-    // highScoresArray.textContent = "View High Scores";
-    // highScoresArray.className = "high-scores-link";
-    // highScoresArray.id = "scores-link";
+
     // create 'Submit' button container
     var submitButtonContainer = document.createElement("div");
     submitButtonContainer.className = "submit-button-container";
     submitButtonContainer.id = "submit-container";
     document.body.appendChild(submitButtonContainer);
-
+    
+    // create 'Submit' button
     var submitButton = document.createElement("button");
     submitButton.textContent = "SUBMIT";
     submitButton.className = "submit-button";
     submitButton.id = "submit";
     submitButtonContainer.appendChild(submitButton);
     submitButton.addEventListener("click", function() {
-        // if (input === "" || input === undefined) {
-        //     alert("You need to enter two initials!")
-        // }
-        // else {
         yourHighScore.classList.add("hide");
         initialsInstructions.classList.add("hide");
         initialsInputContainer.classList.add("hide");
@@ -558,55 +494,38 @@ function endQuiz() {
         highScoresLink.classList.add("hide");
         timer.classList.add("hide");
         var userInitials = document.getElementById("input").value;
-        localStorage.setItem("userInitials", userInitials);
+        userInitialsArray.push(userInitials);
+        localStorage.setItem("userInitials", JSON.stringify(userInitialsArray));
         highScoresList();
-        // }
     });
     clearInterval(interval);
-    // localStorage.setItem("interval", highScore);
-}
+};
 
-// function highScorePage() {
-// var highScore = document.createElement("div");
-// document.body.appendChild(highScore);
-// }
-// saves highScore to localStorage - PUT THIS IN 'SUBMIT' BUTTON FUNCTION
-
+// if player scores '0', they will be taken directly to the high scores page and not asked for their initials
 function highScoresList() {
-    // timer.classList.add("hide");
 
-    // var ulEl = document.getElementById("question-one");
-    // ulEl.classList.add("hide");
-
-    // var ulElTwo = document.getElementById("question-two");
-    // ulElTwo.classList.add("hide");
-
-    // var ulElThree = document.getElementById("question-three");
-    // ulElThree.classList.add("hide");
-
-    // var ulElFour = document.getElementById("question-four");
-    // ulElFour.classList.add("hide");
-
-    // var ulElFive = document.getElementById("question-five");
-    // ulElFive.classList.add("hide");
-    // hideQuestions();
     timer.classList.add("hide");
 
+    // create 'High Scores' header
     var highScoresList = document.createElement("ul");
     highScoresList.textContent = "HIGH SCORES";
     highScoresList.className = "high-scores";
     highScoresList.id = "scores";
     document.body.appendChild(highScoresList);
 
-    var highScoreInitials = localStorage.getItem("userInitials");
-    // highScoreInitials.className = "high-score-initials";
-    var highScoreScore = localStorage.getItem("score");
-    // highScoreScore.className = "high-score-score";
+    // list of recent high scores
+    for (var i = 0; i < highScoresArray.length; i++) {
+        var listItem = document.createElement("li");
+        listItem.className = "list-item";
+        listItem.textContent = userInitialsArray[i] + ": " + highScoresArray[i];
+        highScoresList.appendChild(listItem);
+        };
+
     var initialsAndScoreContainer = document.createElement("div");
-    initialsAndScoreContainer.textContent = highScoreInitials + ":  " + highScoreScore;
     initialsAndScoreContainer.id = "initials-score-container"
     highScoresList.appendChild(initialsAndScoreContainer);
-
+    
+    // create 'Play Again' button.  Allows player to start quiz over again to improve their score.
     var playAgainButtonContainer = document.createElement("div");
     playAgainButtonContainer.className = "play-again-button-container";
     playAgainButtonContainer.id = "play-again-container";
@@ -619,18 +538,9 @@ function highScoresList() {
     playAgainButtonContainer.appendChild(playAgainButton);
     playAgainButton.addEventListener("click", function() {
         document.location.reload();
-        // highScoresList.classList.add("hide");
-        // playAgainButtonContainer.classList.add("hide");
-        // playAgainButton.classList.add("hide");
-        // clearHighScoresContainer.classList.add("hide");
-        // clearHighScoresButton.classList.add("hide");
-        // getMeOutButtonContainer.classList.add("hide");
-        // getMeOutButton.classList.add("hide");
-        // timer.classList.remove("hide");
-        // startTimer();
-        // questionOne();
     });
-
+    
+    // create 'Clear High Scores' button
     var clearHighScoresContainer = document.createElement("div");
     clearHighScoresContainer.className = "clear-scores-button-container";
     clearHighScoresContainer.id = "clear-scores-container";
@@ -642,10 +552,12 @@ function highScoresList() {
     clearHighScoresButton.id = "clear-scores";
     clearHighScoresContainer.appendChild(clearHighScoresButton);
     clearHighScoresButton.addEventListener("click", function() {
+        listItem.classList.add("hide");
         initialsAndScoreContainer.classList.add("hide");
         localStorage.clear();
     });
 
+    // create "Get Me Outta Here" button.  Redirects player to Google.
     var getMeOutButtonContainer = document.createElement("div");
     getMeOutButtonContainer.className = "get-me-out-button-container";
     getMeOutButtonContainer.id = "get-out-container";
@@ -659,50 +571,4 @@ function highScoresList() {
     getMeOutButton.addEventListener("click", function URL() {
         location.href = "http://www.google.com";
     });
-}
-
-// high-scores page
-// function endQuiz() {
-//     var stopHighScore = 
-//     // var highScores = countdownTime
-// }
-
-
-
-
-// var allQuestions = [
-    // {questionOne: "test text"},
-    // {questionText: "2nd question"},
-    // {answerChoiceOne: ""}
-// ]
-
-// var questionOne = {
-//     questionText: "favorite apple?",
-//     answerOneText: "honeycrisp"
-// }
-
-// var questionOneEl = document.createElement('div')
-//     questionOne.textContent = "Favorite fruit?";
-//     answerOne.textContent = "apples";
-//     answerTwo.textContent = "oranges";
-//     answerThree.textContent = "pears";
-//     answerFour.textContent = "bananas"
-// document.body.appendChild(questionOneEl)
-// document.body.appendChild(answerOne)
-// document.body.appendChild(answerTwo)
-// document.body.appendChild(answerThree)
-// document.body.appendChild(answerFour)
-
-
-// startButton.innerHTML = "START";
-
-
-
-
-
-
-
-
-// for each loop = iterate over an array, creates ordered list. add event listener to ordered list.
-
-// if question count = more than number of questions OR if timer reaches 0, then go to endgame function ('see high score, add initials, choice to play again)
+};
