@@ -17,4 +17,4 @@ https://christopherlawn.github.io/code-quiz-web-api/
 ## Contribution
 Made with ❤️ by Chris Lawn
 
-### ©️JS Code Quiz
+### ©️2021 JS Code Quiz
