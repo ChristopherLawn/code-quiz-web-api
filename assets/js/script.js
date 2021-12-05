@@ -23,7 +23,7 @@ document.body.appendChild(welcomeMessage);
 
 // "Welcome" message text
 var welcomeMessageText = document.createElement("h3");
-welcomeMessageText.textContent = "You will have 60 seconds to complete the quiz. Each wrong answer will subtract 10 seconds from the clock. If you complete the quiz before the clock runs out, the time remaining will be your final score. Click the 'START' button below to begin!";
+welcomeMessageText.textContent = "You will have 30 seconds to complete the quiz. Each correct answer will add 10 seconds to the clock. Each wrong answer will subtract 10 seconds from the clock. If you complete the quiz before the clock runs out, the time remaining will be your final score. Click the 'START' button below to begin!";
 welcomeMessageText.className = "welcome-msg-text";
 welcomeMessageText.id = "welcome-text"
 document.body.appendChild(welcomeMessageText);
@@ -61,16 +61,18 @@ var interval;
 
 // start 'Timer'
 function startTimer() {
-    countdownTime = 10;
+    countdownTime = 30;
     timer.textContent = countdownTime;
-    
     interval = setInterval(function() {
-        countdownTime = countdownTime - 1;
-        timer.textContent = countdownTime;
         if (countdownTime === 0) {
             clearInterval(interval);
-            highScoresList()
-        }
+            hideQuestions();
+            highScoresList();
+            timer.textContent = countdownTime;
+            return;
+        };
+        countdownTime = countdownTime - 1;
+        timer.textContent = countdownTime;
     }, 1000);
 }
 // if (countdownTime === 0){
@@ -83,6 +85,7 @@ var questionOne;
 function questionOne() {
     var questionOne = document.createElement('ul');
     questionOne.id = "question-one";
+    questionOne.className = "question";
     document.body.appendChild(questionOne);
     questionOne.textContent = "1. What year was HTML 1.0 released?"
     var answerOne = document.createElement('li');
@@ -90,7 +93,11 @@ function questionOne() {
     answerOne.textContent = "A:  1991"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionOne.classList.add("hide")
         answerOne.classList.add("hide")
         questionTwo()
@@ -100,7 +107,11 @@ function questionOne() {
     answerTwo.textContent = "B:  1992"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionOne.classList.add("hide")
         answerTwo.classList.add("hide")
         questionTwo()
@@ -111,7 +122,7 @@ function questionOne() {
     answerThree.textContent = "C:  1993"
     answerThree.addEventListener("click", function() {
         alert("Correct!")
-        // highScore.innerHTML += 20;
+        countdownTime = countdownTime + 10;
         questionOne.classList.add("hide")
         answerThree.classList.add("hide")
         questionTwo()
@@ -122,7 +133,11 @@ function questionOne() {
     answerFour.textContent = "D:  1994"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionOne.classList.add("hide")
         answerFour.classList.add("hide")
         questionTwo()
@@ -148,7 +163,11 @@ function questionTwo() {
     answerOne.textContent = "A:  <!-- --!>"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionTwo.classList.add("hide")
         answerOne.classList.add("hide")
         questionThree()
@@ -158,7 +177,7 @@ function questionTwo() {
     answerTwo.textContent = "B:  //"
     answerTwo.addEventListener("click", function() {
         alert("Correct!")
-        // highScore.innerHTML += 20;
+        countdownTime = countdownTime + 10;
         questionTwo.classList.add("hide")
         answerTwo.classList.add("hide")
         questionThree()
@@ -169,7 +188,11 @@ function questionTwo() {
     answerThree.textContent = "C:  -' '- "
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionTwo.classList.add("hide")
         answerThree.classList.add("hide")
         questionThree()
@@ -180,7 +203,11 @@ function questionTwo() {
     answerFour.textContent = "D:  /*  */"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionTwo.classList.add("hide")
         answerFour.classList.add("hide")
         questionThree()
@@ -209,7 +236,11 @@ function questionThree() {
     answerOne.textContent = "A:  Push"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionThree.classList.add("hide")
         answerOne.classList.add("hide")
         questionFour()
@@ -219,7 +250,11 @@ function questionThree() {
     answerTwo.textContent = "B:  Commit"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionThree.classList.add("hide")
         answerTwo.classList.add("hide")
         questionFour()
@@ -230,7 +265,11 @@ function questionThree() {
     answerThree.textContent = "C:  Pull"
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionThree.classList.add("hide")
         answerThree.classList.add("hide")
         questionFour()
@@ -241,7 +280,7 @@ function questionThree() {
     answerFour.textContent = "D:  Merge"
     answerFour.addEventListener("click", function() {
         alert("Correct!")
-        // highScore.innerHTML += 20;
+        countdownTime = countdownTime + 10;
         questionThree.classList.add("hide")
         answerFour.classList.add("hide")
         questionFour()
@@ -270,7 +309,7 @@ function questionFour() {
     answerOne.textContent = "A:  <script src='title.js'>"
     answerOne.addEventListener("click", function() {
         alert("Correct!")
-        // highScore.innerHTML += 20;
+        countdownTime = countdownTime + 10;
         questionFour.classList.add("hide")
         answerOne.classList.add("hide")
         questionFive()
@@ -280,7 +319,11 @@ function questionFour() {
     answerTwo.textContent = "B:  <script name='title.js'>"
     answerTwo.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionFour.classList.add("hide")
         answerTwo.classList.add("hide")
         questionFive()
@@ -291,7 +334,11 @@ function questionFour() {
     answerThree.textContent = "C:  <script href='title.js'>"
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionFour.classList.add("hide")
         answerThree.classList.add("hide")
         questionFive()
@@ -302,7 +349,11 @@ function questionFour() {
     answerFour.textContent = "D:  <script id='title.js'>"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionFour.classList.add("hide")
         answerFour.classList.add("hide")
         questionFive()
@@ -331,7 +382,11 @@ function questionFive() {
     answerOne.textContent = "A:  var fruits = 'apple', 'orange', 'grape'"
     answerOne.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionFive.classList.add("hide")
         answerOne.classList.add("hide")
         timer.classList.add("hide");
@@ -344,7 +399,7 @@ function questionFive() {
     answerTwo.textContent = "B:  var fruits = ['apple', 'orange', 'grape']"
     answerTwo.addEventListener("click", function() {
         alert("Correct!")
-        // highScore.innerHTML += 20;
+        countdownTime = countdownTime + 10;
         questionFive.classList.add("hide")
         answerTwo.classList.add("hide")
         timer.classList.add("hide");
@@ -358,7 +413,11 @@ function questionFive() {
     answerThree.textContent = "C:  var fruits = (1='apple', 2='orange', 3='grape')"
     answerThree.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionFive.classList.add("hide")
         answerThree.classList.add("hide")
         timer.classList.add("hide");
@@ -372,7 +431,11 @@ function questionFive() {
     answerFour.textContent = "D:  var fruits = 1=('apple'), 2=('orange'), 3=('grape')"
     answerFour.addEventListener("click", function() {
         alert("Wrong!")
-        countdownTime = countdownTime - 10;
+        if (countdownTime - 10 > 0) {
+            countdownTime = countdownTime - 10;
+          } else {
+            countdownTime = 0;
+          }
         questionFive.classList.add("hide")
         answerFour.classList.add("hide")
         timer.classList.add("hide");
@@ -392,7 +455,32 @@ function questionFive() {
     // }
 };
 
+function hideQuestions() {
+    var ulEl = document.getElementById("question-one");
+    if (ulEl) {
+        ulEl.classList.add("hide");
+    };
 
+    var ulElTwo = document.getElementById("question-two");
+    if (ulElTwo) {
+    ulElTwo.classList.add("hide");
+    };
+
+    var ulElThree = document.getElementById("question-three");
+    if (ulElThree) {
+    ulElThree.classList.add("hide");
+    };
+
+    var ulElFour = document.getElementById("question-four");
+    if (ulElFour) {
+    ulElFour.classList.add("hide");
+    };
+
+    var ulElFive = document.getElementById("question-five");
+    if (ulElFive) {
+    ulElFive.classList.add("hide");
+    };
+};
 
 
 // var highScores = countdownTime
@@ -403,20 +491,7 @@ function endQuiz() {
     // var highScoresArray = JSON.parse(localStorage.getItem("interval")) || [];
     // var highScoresArray = document.createElement("h3");
     // document.body.appendChild(highScoresArray);
-    var ulEl = document.getElementById("question-one");
-    ulEl.classList.add("hide");
-
-    var ulElTwo = document.getElementById("question-two");
-    ulElTwo.classList.add("hide");
-
-    var ulElThree = document.getElementById("question-three");
-    ulElThree.classList.add("hide");
-
-    var ulElFour = document.getElementById("question-four");
-    ulElFour.classList.add("hide");
-
-    var ulElFive = document.getElementById("question-five");
-    ulElFive.classList.add("hide");
+    hideQuestions();
 
     var yourHighScore = document.createElement("h1");
     var score = localStorage.getItem("score");
@@ -514,6 +589,8 @@ function highScoresList() {
 
     // var ulElFive = document.getElementById("question-five");
     // ulElFive.classList.add("hide");
+    // hideQuestions();
+    timer.classList.add("hide");
 
     var highScoresList = document.createElement("ul");
     highScoresList.textContent = "HIGH SCORES";
