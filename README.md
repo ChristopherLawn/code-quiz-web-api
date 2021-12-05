@@ -9,7 +9,7 @@ A fun, brief interactive quiz that challenges the player's knowledge about JavaS
 * JS
 
 ## Website
-https://lernantino.github.io/run-buddy/
+https://christopherlawn.github.io/code-quiz-web-api/
 
 ## Contribution
 Made with ❤️ by Chris Lawn
